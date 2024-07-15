@@ -1,3 +1,11 @@
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
+
 import { getLocaleOnServer } from '@/i18n/server'
 
 import './styles/globals.css'
@@ -10,15 +18,23 @@ const LocaleLayout = ({
 }) => {
   const locale = getLocaleOnServer()
   return (
-    <html lang={locale ?? 'en'} className="h-full">
-      <body className="h-full">
-        <div className="overflow-x-auto">
-          <div className="w-screen h-screen min-w-[300px]">
-            {children}
+    <ClerkProvider>
+      <html lang={locale ?? 'en'} className="h-full">
+        <body className="h-full">
+          <div className="overflow-x-auto">
+            <div className="w-screen h-screen min-w-[300px]">
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+                {children}
+              </SignedIn>
+            </div>
           </div>
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
 
