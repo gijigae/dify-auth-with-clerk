@@ -5,7 +5,6 @@ import {
   SignedOut,
   UserButton,
 } from '@clerk/nextjs'
-
 import { getLocaleOnServer } from '@/i18n/server'
 
 import './styles/globals.css'
@@ -21,13 +20,22 @@ const LocaleLayout = ({
     <ClerkProvider>
       <html lang={locale ?? 'en'} className="h-full">
         <body className="h-full">
-          <div className="overflow-x-auto">
-            <div className="w-screen h-screen min-w-[300px]">
+          <div className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md">
               <SignedOut>
-                <SignInButton />
+                <div className="text-center">
+                  <h1 className="mb-6 text-2xl font-bold text-gray-800">Welcome</h1>
+                  <SignInButton mode="modal">
+                    <button className="w-full px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </div>
               </SignedOut>
               <SignedIn>
-                <UserButton />
+                <div className="flex justify-end mb-4">
+                  <UserButton />
+                </div>
                 {children}
               </SignedIn>
             </div>
