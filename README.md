@@ -10,6 +10,10 @@ NEXT_PUBLIC_APP_ID=
 NEXT_PUBLIC_APP_KEY=
 # APP URL
 NEXT_PUBLIC_API_URL=
+# Celrk's publishable key
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+# Clerk's secret key
+CLERK_SECRET_KEY=
 ```
 
 Config more in `config/index.ts` file:   
